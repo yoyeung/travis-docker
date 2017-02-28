@@ -2,3 +2,4 @@ web:
   image: mosesy/travis-doc:latest
   ports:
     - "80:1337"
+  mem_limit: 134217728
