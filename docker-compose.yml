@@ -1,4 +1,4 @@
 web:
   image: mosesy/travis-doc:latest
   ports:
-    - "80:3000"
+    - "80:1337"
