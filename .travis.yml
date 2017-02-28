@@ -1,3 +1,11 @@
+language: node_js
+node_js:
+ — '7'
+services:
+ — docker
+before_script:
+ — sleep 15
+sudo: required
 env:
   global:
     DOCKER_EMAIL:
@@ -6,16 +14,7 @@ env:
       secure: p9grLdiGI/LnxJZ55Y1czzFmaQ0tOyzMocob0n2X6mF7eFXeNrFhSIaTDwbQVsKfXmvfpKpESse+PsEJrN7TPOdlkfi1YrDLpDOt3G5p6r8ZLQfExALE52p5B8LnYKdGE6GCCfKjYA6VBpXeQh6SR2zPKvZZ1m7mPhLI+lfCVMlQ3h9w9XeayufKP9yS4GhYDdDN5equcHLKFKaw8tcbCVd3HSBXDBfL3Sy54LLul82fNp6QnTZbhxk5/P280orfHrnl/BUSZ9qI1Ftm1KEI/dnSuzBoD4S4i9eutgo70DQvith4dE71b2VJqN7PI6htLUN8FqfQU4A+Lk357CDl6riDGE+Dxy4LPG5T5gLslxZVVLuGM1atvFZGp9CfbRkzDCbhdNTfbEYSAKaiqmkR7nSL/C+IEOy6lW67HJG60Clghzuj3rkKerw4Wnguiqr/0CCeTDbDol47WvnllnvS7FG96ue9OWnVQEYA0uUP/mDqA2qFh9WWqQcQcHtu9FOQw2t4yPU3OSE+WeDVWkz97aMGs1x1T6+pYxdJlN9mzdwcjkvnhEwYreIU4XOYFteiYtZCNXjZE32oMnKugR9fWlfRZTCW38DYTJxAEUltPhNrpMZoqbtZUgnwleyynK4rtcB7PNlNeWu6QV52fy+B4TB6nBYZCdJ4/feSRj2OvTY=
     DOCKER_USER:
       secure: Y4Hs3gl28YwI7Inh0FXKN00eFjKFOKb2j+/IP+a7rR7bV9YdTQ/SY1RaKu3RL8IMLTtmGe2oliF6QD1BaprCZ6EUJxgUdpcMvP5Gce+fa+RoBQSdRZMOtv5Cv6qTRqlHkWZhdUWjnb+Q7THalz2qQhyUSE0EoF/xUEudl+WRx6GZGQIS0ss35LRC5LW9wJvYriFrClks0tYUjVPhZuHgOO6FqYIzkxjEUX0cZeFcS4tV2K+4SEMZFrud8ww246GrpscOFHqEXmBPbdUxHWVj3NlGXi9ehDuv2rXBrEJlrTPZVU6cVGg+j5sxhflK1yiaVrPxqpFLYxSI5NAOy1ti7QpczdfUcVKIoQaPvhhbPCen9Pn6jzGc1aYQ7Qnqv7KoYSoxKNFSrTVyA3DKQVz0zPVM/iamaZlI0sCZ6q+2tNFzAgmmdXkJHUauBq7anehfbMCrEHIggnoTVxYLCGewLvUjiLbZk3blcScyRCsAwGcgEcUV1YKSck0N1nOhsdrSugtQsaNyAtjbei/+AqwlFJJ3P+UpoXpa17Y2mfiVGGWCEk+b1S1ANILIx3Xgj2Wo1witErrs8m9PMSJdNDM5DrZHdzwYpzmdzXf9fWebHvERwCuDhc053EgYVOrwBmaYhP+dPqyhfQyejCPj5HGS3hk93Q/I/Vt6LEtP32iXcXE=
-language: node_js
-node_js:
-— '7'
-services:
- — docker
-before_script:
- — sleep 15
-env:
- global:
-   — COMMIT=${TRAVIS_COMMIT::6}
+    — COMMIT=${TRAVIS_COMMIT::6}
 after_success:
  — docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
  — export REPO=$DOCKER_USER/mosesy
