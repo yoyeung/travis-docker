@@ -16,11 +16,4 @@ env:
   #DOCKER_USER:
   - secure: Y4Hs3gl28YwI7Inh0FXKN00eFjKFOKb2j+/IP+a7rR7bV9YdTQ/SY1RaKu3RL8IMLTtmGe2oliF6QD1BaprCZ6EUJxgUdpcMvP5Gce+fa+RoBQSdRZMOtv5Cv6qTRqlHkWZhdUWjnb+Q7THalz2qQhyUSE0EoF/xUEudl+WRx6GZGQIS0ss35LRC5LW9wJvYriFrClks0tYUjVPhZuHgOO6FqYIzkxjEUX0cZeFcS4tV2K+4SEMZFrud8ww246GrpscOFHqEXmBPbdUxHWVj3NlGXi9ehDuv2rXBrEJlrTPZVU6cVGg+j5sxhflK1yiaVrPxqpFLYxSI5NAOy1ti7QpczdfUcVKIoQaPvhhbPCen9Pn6jzGc1aYQ7Qnqv7KoYSoxKNFSrTVyA3DKQVz0zPVM/iamaZlI0sCZ6q+2tNFzAgmmdXkJHUauBq7anehfbMCrEHIggnoTVxYLCGewLvUjiLbZk3blcScyRCsAwGcgEcUV1YKSck0N1nOhsdrSugtQsaNyAtjbei/+AqwlFJJ3P+UpoXpa17Y2mfiVGGWCEk+b1S1ANILIx3Xgj2Wo1witErrs8m9PMSJdNDM5DrZHdzwYpzmdzXf9fWebHvERwCuDhc053EgYVOrwBmaYhP+dPqyhfQyejCPj5HGS3hk93Q/I/Vt6LEtP32iXcXE=
 after_success:
-  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-  - export REPO=$DOCKER_USER/mosesy
-  - export TAG='if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi'
-  — echo $REPO:$TAG:$COMMIT
-  — docker build -f Dockerfile -t $REPO:$COMMIT .
-  — docker tag $REPO:$COMMIT $REPO:$TAG
-  — docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-  - docker push $REPO
+  - deploy.sh
