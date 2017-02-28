@@ -1,6 +1,6 @@
 #!/bin/bash
 docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-export REPO=$DOCKER_USER/mosesy
+export REPO=$DOCKER_USER/travis-doc
 export TAG='if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi'
 echo $REPO:$TAG:$COMMIT
 docker build -f Dockerfile -t $REPO:$COMMIT .
