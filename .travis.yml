@@ -9,6 +9,6 @@ env:
   - COMMIT=${TRAVIS_COMMIT::8}
 before_script:
    - chmod +x ./deploy.sh
+   - ./deploy.sh
 after_success:
-  - ./deploy.sh
   - ./pushECS.sh
