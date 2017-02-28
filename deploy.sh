@@ -1,7 +1,10 @@
 #!/bin/bash
-docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
 export REPO=$DOCKER_USER/travis-doc
-export TAG='if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi'
+if [ "$TRAVIS_BRANCH" == "master" ]; then 
+  export TAG="latest"
+else
+  export TAG=$TRAVIS_BRANCH
 echo $REPO:$TAG:$COMMIT
 docker build -f Dockerfile -t $REPO:$COMMIT .
 docker tag $REPO:$COMMIT $REPO:$TAG
